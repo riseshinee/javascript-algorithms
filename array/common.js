@@ -10,7 +10,7 @@
  * hashmap 객체를 순회하면서 값이 kArray의 길이와 동일한 요소를 찾습니다.
  * 해당 요소를 정수로 변환하여 answer 배열에 추가합니다.
  * answer 배열을 반환합니다.
- * 시간복잡도 : O(kn)
+ * 시간복잡도: O(kn)
  * @param {} kArray 
  * @returns 
  */

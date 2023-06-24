@@ -16,7 +16,6 @@ function medianOfArray(array){
     }
 }
 
-
 /**
  * 두개의 정렬된 배열이 동일한 크기일 때 해당 배열들의 중앙값 찾기 
  * 분할 정복(Divide and Conquer) 알고리즘
@@ -31,7 +30,7 @@ function medianOfArray(array){
  * median1이 median2보다 작은 경우, arr1과 arr2를 잘라서 offsetMinus 위치부터 끝까지를 인자로 하여 재귀적으로 medianOfTwoSortedArray 함수를 호출합니다.
  * median1이 median2보다 큰 경우, arr2와 arr1을 잘라서 offsetMinus 위치부터 끝까지를 인자로 하여 재귀적으로 medianOfTwoSortedArray 함수를 호출합니다.
  * 재귀 호출된 결과를 반환합니다.
- * 시간복잡도 : O(log2(n)) (2를 밑으로 하는 로그)
+ * 시간복잡도: O(log2(n)) (2를 밑으로 하는 로그)
  * @param {*} arr1 
  * @param {*} arr2 
  * @param {*} pos 배열의 크기가 짝수인지 홀수인지 확인하기 위한 변수
