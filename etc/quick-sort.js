@@ -1,3 +1,8 @@
+/**
+ * 퀵 정렬 완성하기
+ * @param {} arr 
+ * @returns 
+ */
 function quickSort(arr){
   if (arr.length <= 1){
     return arr;
