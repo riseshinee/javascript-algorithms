@@ -40,6 +40,7 @@ function getNthFibo2(n){
   }else{
     return getNthFibo2(n-1) + getNthFibo2(n-2)
   }
+}
 
 /**
  * 개선사항 적용
@@ -53,7 +54,4 @@ function getNthFiboBetter(n, lastlast, last){
     return last;
   }
   return getNthFiboBetter(n, last, lastlast + last);
-}
-
-
 }
