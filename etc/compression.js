@@ -13,7 +13,7 @@ let count = 0;
 
 for (let i of user_s){
   if (i === store_s){
-    count += 1;
+    count += 1; 
   } else{
     result_s += store_s + String(count);
     store_s = i;
