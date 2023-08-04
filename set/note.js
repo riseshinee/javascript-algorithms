@@ -18,3 +18,21 @@ set.add(1);
 set.delete(1); //true
 set.add(2);
 set.has(2); //true
+
+/**
+ * 교집합 
+ */
+function intersectSets(a,b){
+  let intersection = new Set();
+  for(let el of b){
+    if(a.has(el)){
+      intersection.add(el)
+    }
+
+    return intersection;
+  }
+}
+
+/**
+ * 상위 집합 여부 확인
+ */
