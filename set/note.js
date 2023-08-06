@@ -36,3 +36,33 @@ function intersectSets(a,b){
 /**
  * 상위 집합 여부 확인
  */
+function isSuperset(a,b){
+  for(let el of subSet){
+    if(!a.has(el)){
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * 합집합
+ */
+function unionSet(a,b){
+  let union = new Set(a);
+  for(let el of b){
+    union.add(el);
+  }
+  return union;
+}
+
+/**
+ * 차집합
+ */
+function diffSet(a,b){
+  let diff = new Set(a);
+  for(let el of b){
+    diff.delete(el);
+  }
+  return diff;
+}
