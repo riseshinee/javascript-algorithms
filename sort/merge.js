@@ -26,7 +26,7 @@ function mergeSort(array){
         return array;
     }
 
-    let midpoint = Math.floor((array.length)/2,
+    let midpoint = Math.floor((array.length)/2),
         leftArray = array.slice(0,midpoint),
         rightArray = array.slice(midpoint);
 
