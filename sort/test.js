@@ -22,3 +22,20 @@ function sqrtInt(number) {
  }
  return ans;
 }
+
+/**
+ * 배열의 두 항목을 더해서 주어진 수가 될 수 있는지 확인하기
+ * hint: 이미 방문한 숫자를 기억하기, 시간복잡도:O(n)
+ * @param arr
+ * @param sum
+ * @returns {boolean}
+ */
+function findTwoSum(arr, sum){
+    let store = {};
+
+    for(let i=0; i<arr.length; i++){
+        if(store[arr[i]]) return true;
+        else store[sum-arr[i]] = arr[i];
+    }
+    return false;
+}
