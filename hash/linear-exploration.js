@@ -1,3 +1,8 @@
+/**
+ * 선형 탐사
+ * @param size
+ * @constructor
+ */
 function HashTable(size){
   this.size = size;
   this.keys = this.initArray(size);

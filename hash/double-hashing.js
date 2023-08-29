@@ -1,5 +1,5 @@
 /**
- * 이차 탐사
+ * 선형 탐사를 활용해 이중 해싱 사용
  * @param size
  * @constructor
  */
@@ -13,12 +13,12 @@ function HashTable(size){
 HashTable.prototype.put = function(key,value){
     if(this.limit >= this.size) throw 'hash table is full';
 
-    let hashedIndex = this.hash(key), squareIndex = 1;
+    let hashedIndex = this.hash(key);
 
+    //선형탐사
     while(this.keys[hashedIndex] != null){
-        hashedIndex += Math.pow(squareIndex,2);
+        hashedIndex++;
         hashedIndex = hashedIndex % this.size;
-        squareIndex++;
     }
 
     this.keys[hashedIndex] = key;
@@ -27,12 +27,21 @@ HashTable.prototype.put = function(key,value){
 }
 
 HashTable.prototype.get = function(key){
-    let hashedIndex = this.hash(key), squareIndex = 1;
+    let hashedIndex = this.hash(key);
 
     while(this.keys[hashedIndex] != key ){
-        hashedIndex += Math.pow(squareIndex,2);
+        hashedIndex ++;
         hashedIndex = hashedIndex % this.size;
-        squareIndex++;
     }
     return this.values[hashedIndex];
+}
+
+HashTable.prototype.hash = function(key){
+    if(!Number.isInteger(key)) throw 'must be int';
+    return this.secondHash(key%this.size);
+}
+
+HashTable.prototype.secondHash = function(hashedKey) {
+    let R = this.size - 2;
+    return R - hashedKey % R
 }
