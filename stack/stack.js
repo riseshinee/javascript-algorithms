@@ -8,8 +8,14 @@ class Stack {
     }
     pop() {
         if (this.index <= 0) return null;
-        const result = this.arr[--this.index];
-        return result;
+        return this.arr[--this.index];
+    }
+    getBuffer(){
+        return this.arr.slice();
+    }
+
+    isEmpty() {
+        return this.arr.length === 0;
     }
 }
 
@@ -21,3 +27,21 @@ console.log(stack.pop()); // 3 , index: 2
 console.log(stack.pop()); // 2 , index: 1
 console.log(stack.pop()); // 1 , index: 0
 console.log(stack.pop()); // null
+
+/**
+ * 검색
+ * pop이 버퍼 스택에 대해 호출될 수 있도록 버퍼 스택을 만듬
+ * @param stack
+ * @param element
+ * @returns {boolean}
+ */
+function stackSearch(stack, element){
+    let bufferArray = stack.getBuffer();
+    let bufferStack = new Stack(bufferArray);
+    while (!bufferStack.isEmpty()){
+        if(!bufferStack.pop()===element){
+            return true;
+        }
+    }
+    return false;
+}
