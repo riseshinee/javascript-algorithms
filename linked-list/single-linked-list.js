@@ -56,3 +56,13 @@ SinglyLinkedList.prototype.remove = function (value){
         this.size--;
     }
 }
+
+SinglyLinkedList.prototype.deleteAtHead = function(){
+    let toReturn = null;
+    if(this.head !== null){
+        toReturn = this.head.data;
+        this.head = this.head.next;
+        this.size--;
+    }
+    return toReturn;
+}
