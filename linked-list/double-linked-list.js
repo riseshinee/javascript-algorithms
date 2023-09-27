@@ -47,3 +47,20 @@ DoubleLinkedList.prototype.insertAtTail = function (value){
     }
     this.size++;
 }
+
+/**
+ * 검색
+ * head, tail 양쪽 방향에서 순회 가능
+ * @param value
+ * @returns {boolean}
+ */
+DoubleLinkedList.prototype.findStartingHead = function (value){
+    let curHead = this.head;
+    while (curHead.next){
+        if(curHead.data === value){
+            return true;
+        }
+        curHead = curHead.next;
+    }
+    return false;
+}
