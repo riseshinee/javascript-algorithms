@@ -42,3 +42,4 @@ BinaryTreeNode.prototype.traversePreOrder = function (){
         traveersePreOrderHelper(node.right);
     }
 }
+
