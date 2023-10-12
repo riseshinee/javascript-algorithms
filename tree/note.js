@@ -25,9 +25,10 @@ function BinaryTree(){
 
 /**
  * 트리 순회: 인덱스가 크기 제한에 도달할 때까지 인덱스 증가
- * TODO: 선순위순회: 루트->왼쪽->오른쪽순으로 노드를 순회
- * TODO: 중순위순회: 왼쪽->루트->오른쪽순으로 노드를 방문
- * TODO: 후순위순회,단계순위순회
+ * TODO: 선순위순회: 루트->왼쪽->오른쪽순으로 노드를 순회, 루트를 조사할 필요가 있을 때
+ * TODO: 중순위순회: 왼쪽->루트->오른쪽순으로 노드를 방문, 트리 생성과 같은 순서대로 방문하고 싶을 때
+ * TODO: 후순위순회: 왼쪽->오른쪽->루트순으로 노드를 방문, 자식 노드를 조사할 때
+ * TODO: 단계순위순회(너비우선검색,BFS): 노드를 단계별로 방문
  */
 
 /**
@@ -79,3 +80,58 @@ BinaryTree.prototype.traverseInOrderIterative = function (){
     }
 }
 
+/**
+ * 후순위 순회
+ */
+BinaryTree.prototype.traversePostOrder = function (){
+    traversePostOrderHelper(this._root);
+
+    function traversePostOrderHelper(node){
+        if(node.left){
+            traversePostOrderHelper(node.left);
+        }
+        if(node.right){
+            traversePostOrderHelper(node.right);
+        }
+    }
+}
+
+BinaryTree.prototype.traversePostOrderIterative = function (){
+    let s1 = [], s2 = []; //stack
+    s1.push(this._root);
+
+    while (s1.length) {
+        let node = s1.pop();
+        s2.push(node);
+
+        if (node.left) {
+            s1.push(node.left);
+        }
+        if(node.right){
+            s1.push(node.right);
+        }
+    }
+    while (s2.length){
+        let node = s2.pop();
+        console.log(node.value);
+    }
+}
+
+BinaryTree.prototype.traverseLevelOrder = function () {
+    let root = this._root, queue = [];
+
+    if(!root){
+        return;
+    }
+    queue.push(root);
+
+    while (queue.length){
+        let temp = queue.shift();
+        if(temp.left){
+            queue.push(temp.left);
+        }
+        if(temp.right){
+            queue.push(temp.right);
+        }
+    }
+}
