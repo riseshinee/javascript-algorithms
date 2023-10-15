@@ -117,6 +117,9 @@ BinaryTree.prototype.traversePostOrderIterative = function (){
     }
 }
 
+/**
+ * 단계순위순회
+ */
 BinaryTree.prototype.traverseLevelOrder = function () {
     let root = this._root, queue = [];
 
