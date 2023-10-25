@@ -46,4 +46,22 @@ AVLTree.prototype.rotateLL = function (){
     this.setDepthBasedOnChildren();
 }
 
-AVLTree.
+/**
+ * RR 회전 (오른쪽-오른쪽 회전)
+ * 1. 현재 노드의 값을 왼쪽 자식의 값을로 변경
+ * 2. 현재 노드의 왼쪽 자식을 왼쪽 자식의 오른쪽 자식으로 설정
+ * 3. 왼쪽 자식의 오른쪽 자식에 현재 노드를 설정
+ */
+AVLTree.prototype.rotateRR = function () {
+    let valueBefore = this.value;
+    let leftBefore = this.left;
+    this.value = this.left.value;
+
+    this.left = this.left.right;
+    leftBefore.right = this;
+
+    this.setDepthBasedOnChildren();
+    leftBefore.setDepthBasedOnChildren();
+
+    return leftBefore; // 이동된 서브트리의 새 루트 반환
+}
