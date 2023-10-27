@@ -65,3 +65,29 @@ AVLTree.prototype.rotateRR = function () {
 
     return leftBefore; // 이동된 서브트리의 새 루트 반환
 }
+
+/**
+ * 트리 균형 잡기
+ */
+AVLTree.prototype.balance = function (){
+    let ldepth = this.left == null ? 0 : this.left.depth;
+    let rdepth = this.right == null ? 0 : this.right.depth;
+
+    if(ldepth > rdepth + 1){
+        let lldepth = this.left.left == null ? 0 : this.left.left.depth;
+        let lrdepth = this.left.right == null ? 0 : this.left.right.depth;
+
+        if(lldepth < lrdepth){
+            this.left.rotateRR();
+        }
+        this.rotateLL();
+    }else if(ldepth + 1 < rdepth){
+        let rrdepth = this.right.right == null ? 0 : this.right.right.depth;
+        let rldepth = this.right.left == null ? 0 : this.right.left.depth;
+
+        if(rldepth > rrdepth){
+            this.right.rotateLL()
+        }
+        this.rotateRR();
+    }
+}
