@@ -91,3 +91,34 @@ AVLTree.prototype.balance = function (){
         this.rotateRR();
     }
 }
+
+/**
+ * 삽입 : 삽입 이후 부모가 자식의 균형을 잡은 다음 깊이 값을 설정
+ * @param value
+ * @returns {boolean}
+ */
+AVLTree.prototype.insert = function (value){
+    let childInserted = false;
+    if(value == this.value){
+        return false;
+    }else if(value < this.value){
+        if(this.left == null){
+            this.left = new AVLTree(value);
+            childInserted = true;
+        }else{
+            childInserted = this.left.insert(value);
+            if(childInserted) this.balance();
+        }
+    }else if(value > this.value){
+        if(this.right == null){
+            this.right = new AVLTree(value);
+            childInserted = true;
+        }else{
+            childInserted = this.right.insert(value);
+            if(childInserted) this.balance();
+        }
+    }
+    if(childInserted) this.setDepthBasedOnChildren();
+    return childInserted;
+}
+
