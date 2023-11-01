@@ -122,3 +122,44 @@ AVLTree.prototype.insert = function (value){
     return childInserted;
 }
 
+/**
+ * 삭제
+ * @param value
+ * @returns {*|{right}|{left}}
+ */
+AVLTree.prototype.remove = function (value){
+    return deleteRecursively(this, value);
+    function deleteRecursively(root, value){
+        if(!root){
+            return null;
+        }else if( value < root.value){
+            root.left = deleteRecursively(root.left, value);
+        }else if(value > root.value){
+            root.right = deleteRecursively(root.right, value);
+        }else{
+            //자식이 없을 때
+            if(!root.left && !root.right){
+                return null;
+            }else if(!root.left){
+                root = root.right;
+                return root;
+            }else if(!root.right){
+                root = root.left;
+                return root;
+            }else{
+                let temp = findMin(root.right);
+                root.value = temp.value;
+                root.right = deleteRecursively(root.right, temp.value);
+                return root;
+            }
+        }
+        //깊이 조정
+        root.setDepthBasedOnChildren();
+        return root;
+    }
+    function findMin(root){
+        while (root.left) root = root.left;
+        return root;
+    }
+}
+
