@@ -3,6 +3,7 @@
  * 최대 힙: 루트 노드가 가장 높은 값을 갖고 각 노드의 값이 자식의 값보다 큼
  * 최소 힙: 루트 노드가 가장 낮은 값을 갖고 각 노드의 값이 자식의 값보다 작음
  * 배열을 사용해 자료 저장, 부모와 자식 간의 관계를 쉽게 정의, 이진힙
+ * 항목을 추가하거나 삭제할 때 힙의 구조는 유지되어야 함
  */
 
 function Heap(){
@@ -48,6 +49,6 @@ Heap.prototype.peek = function (item){
     return this.items[0];
 }
 
-Heap.prototype.size = function (){
+Heap.prototype.size = function () {
     return this.items.length;
 }
