@@ -8,6 +8,23 @@ function MinHeap(){
 
 MinHeap.prototype = Object.create(Heap.prototype);
 
+MinHeap.prototype.add = function (item){
+    this.items[this.items.length] = item;
+    this.bubbleUp();
+}
+
+/**
+ * 힙으로부터 최소 항목을 제거하고 최소 힙 순서를 유지
+ * @returns {*}
+ */
+MinHeap.prototype.poll = function (){
+    let item = this.items[0];
+    this.items[0] = this.items[this.items.length - 1];
+    this.items.pop();
+    this.bubbleDown();
+    return item
+}
+
 MinHeap.prototype.bubbleDown = function (){
     let index = 0;
 
