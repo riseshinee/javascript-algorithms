@@ -30,7 +30,7 @@ MinHeap.prototype.bubbleDown = function (){
 
     while (this.leftChild(index) && this.leftChild(index) < this.items[index]){
         let smallerIndex = this.leftChildIndex(index);
-        if(this.rightChild(index)&&this.rightChild(index) < this.items[smallerIndex]){
+        if(this.rightChild(index) && this.rightChild(index) < this.items[smallerIndex]){
             smallerIndex = this.rightChildIndex(index);
         }
         this.swap(smallerIndex, index);
