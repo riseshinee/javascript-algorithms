@@ -37,3 +37,7 @@ Trie.prototype.search = function (word){
     }
     return current.endOfWord;
 }
+
+trie.prototype.delete = function (word){
+    this.deleteRecursively(this.root, word,0);
+}
