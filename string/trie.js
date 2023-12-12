@@ -38,6 +38,31 @@ Trie.prototype.search = function (word){
     return current.endOfWord;
 }
 
-trie.prototype.delete = function (word){
+Trie.prototype.delete = function (word){
     this.deleteRecursively(this.root, word,0);
+}
+
+Trie.prototype.deleteRecursively = function (current, word, index){
+    if(index == word.length){
+        if(!current.endOfWord){
+            //단어의 끝에 도달했을 때
+            return false;
+        }
+        current.endOfWord = false;
+        return Object.keys(current.chilldren).length == 0;
+    }
+    let ch = word.charAt(index),
+        node = current.chilldren[ch];
+    if (node == null){
+        return false;
+    }
+    let shouldDeleteCurrentNode = this.deleteRecursively(node, word, index + 1);
+
+    //문자와 트라이 노드 참조의 맵핑을 맵으로부터 삭제
+    if(shouldDeleteCurrentNode){
+        delete current.chilldren[ch];
+        // 맵에 더 이상 매핑이 존재하지 않으면 true 반환
+        return Object.keys(current.chilldren).length == 0;
+    }
+    return false;
 }
