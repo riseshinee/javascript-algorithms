@@ -1,9 +1,3 @@
-/**
- * 보이어-무어 문자열 검색
- * 웹브라우저에서 '찾기' 기능에서 사용, 문자열 내에서 패턴을 검색할 때 인덱스를 건너뜀79
- * @param str
- * @returns {{}}
- */
 function buildBadMatchTable(str){
     let tableObj = {},
         strLength = str.length;
@@ -17,6 +11,13 @@ function buildBadMatchTable(str){
     return tableObj;
 }
 
+/**
+ * 보이어-무어 문자열 검색
+ * 웹브라우저에서 '찾기' 기능에서 사용, 문자열 내에서 패턴을 검색할 때 인덱스를 건너뜀
+ * @param str
+ * @param pattern
+ * @returns {number}
+ */
 function boyerMoore(str, pattern){
     let badMatchTable = buildBadMatchTable(pattern),
         offset = 0,

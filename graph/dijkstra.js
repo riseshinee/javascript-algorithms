@@ -14,6 +14,12 @@ function _extractMin(q,dist){
     return nodeWithMinimumDistance;
 }
 
+/**
+ * 디익스트라 알고리즘 : 루푸를 순회할 때 각 노드에 대한 최단 경로 선택, BFS 사용
+ * @param source
+ * @returns {{}}
+ * @constructor
+ */
 DirectedGraph.prototype.Dijkstra = function (source){
     let q = {}, dist = {};
     for (let vertex in this.edges){
