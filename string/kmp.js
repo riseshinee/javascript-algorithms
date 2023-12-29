@@ -22,6 +22,7 @@ function longestPrefix(str){
 /**
  * 카누스-모리스-플랫 문자열 검색
  * 텍스트에서 특정 단어의 출현 횟수를 검색
+ * 패턴의 인덱스가 패턴의 길이에 도달함 = 문자열을 발견
  * @param str
  * @param pattern
  * @returns {boolean}
@@ -53,3 +54,5 @@ function KMP(str, pattern){
     }
     return false;
 }
+
+KMP('sammiebae', 'bae'); //ture
