@@ -1,3 +1,9 @@
+/**
+ * 건너뛰기 규칙을 구현하기 위한 불일치표 생성 함수
+ * 어떤 패턴의 주어진 문자에 대해 얼마나 건너뛰어야 할지 나타냄
+ * @param str
+ * @returns {{}}
+ */
 function buildBadMatchTable(str){
     let tableObj = {},
         strLength = str.length;
@@ -10,10 +16,14 @@ function buildBadMatchTable(str){
     }
     return tableObj;
 }
+buildBadMatchTable('data'); //{d:3, a:2, t:1}
+buildBadMatchTable('struct'); //{s:5, t:4, r:3, u:2, c:1}
 
 /**
  * 보이어-무어 문자열 검색
- * 웹브라우저에서 '찾기' 기능에서 사용, 문자열 내에서 패턴을 검색할 때 인덱스를 건너뜀
+ * 웹브라우저에서 '찾기' 기능에서 사용
+ * 현재 문자열이 불일치표에 존재하는 경우 현재 문자열과 연관된 불일치표값만큼 인덱스 스킵
+ * 존재하지 않는 경우 인덱스를 1만큼 증가
  * @param str
  * @param pattern
  * @returns {number}
@@ -44,3 +54,6 @@ function boyerMoore(str, pattern){
     }
     return -1;
 }
+
+boyerMoore('jellyjam', 'jelly'); //5 인덱스5에서 패턴 발견
+boyerMoore('jellyjam', 'sam') //-1 패턴이 존재하지 않음
