@@ -1,7 +1,5 @@
 ## javascript-algorithms
 
----
-
 #### 자료구조, 알고리즘 기초 및 연습
 
 - 배열 (array)
